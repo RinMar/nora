@@ -1,0 +1,10 @@
+torch
+transformers==4.50.0
+qwen_vl_utils
+torchvision
+accelerate
+scipy
+gymnasium
+panda-gym
+pillow
+numpy
