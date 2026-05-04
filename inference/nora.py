@@ -138,7 +138,7 @@ class Nora:
         print("Model and processors loaded successfully.")
     
     @torch.inference_mode()
-    def inference(self, image: np.ndarray, instruction: str,unnorm_key: str = None,unnormalizer=None) -> np.ndarray:
+    def inference(self, image: np.ndarray, instruction: str, unnorm_key: str = None, unnormalizer=None, skip_unnorm: bool = False) -> np.ndarray:
         """
         Performs inference to get robotic actions based on an image and instruction.
 
@@ -219,12 +219,14 @@ class Nora:
         
        
         output_action = self.fast_tokenizer.decode([generated_ids[0][start_idx] - self._ACTION_TOKEN_MIN])
-        
-        if unnormalizer is not None: ## If a Lerobot Unnormalizer is provided, use it to unnormalize the action
-            #
-            unnormalized_action = unnormalizer({'action':output_action})
+
+        # Return normalized actions as-is (environment already uses normalized actions)
+        if skip_unnorm:
+            return np.array(output_action[0])
+
+        if unnormalizer is not None:  # If a Lerobot Unnormalizer is provided, use it
+            unnormalized_action = unnormalizer({'action': output_action})
             return unnormalized_action['action']
-       
 
         # --- Denormalize Action ---
         # Assuming output_action is a numpy array of shape (1, time_horizon, action_dim)
@@ -232,7 +234,7 @@ class Nora:
         # The formula is: unnormalized = 0.5 * (normalized + 1) * (high - low) + low
 
         '''We use the norm stats computed from OpenVLA https://arxiv.org/abs/2406.09246'''
-      
+
         action_norm_stats = self.get_action_stats(unnorm_key)
         mask = action_norm_stats.get("mask", np.ones_like(action_norm_stats["q01"], dtype=bool))
         action_high, action_low = np.array(action_norm_stats["q99"]), np.array(action_norm_stats["q01"])
@@ -242,9 +244,6 @@ class Nora:
             + action_low
         )
 
-      
-
-        
         return np.array(unnorm_actions[0])
 
     @staticmethod
