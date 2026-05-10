@@ -9,7 +9,7 @@ from typing import Dict
 
 import tensorflow as tf
 
-from datasets.rlds.utils.data_utils import tree_merge
+from nora.training.datasets.rlds.utils.data_utils import tree_merge
 
 
 def uniform(traj: Dict) -> Dict:

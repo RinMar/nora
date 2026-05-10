@@ -12,7 +12,7 @@ from accelerate.logging import get_logger
 from accelerate.utils import set_seed
 from transformers import AutoProcessor, PreTrainedTokenizerBase, Qwen2_5_VLForConditionalGeneration
 from transformers import SchedulerType, get_scheduler
-from datasets import RLDSDataset, RLDSBatchTransform
+from nora.training.datasets import RLDSDataset, RLDSBatchTransform
 from qwen_vl_utils import process_vision_info
 import math
 import numpy as np

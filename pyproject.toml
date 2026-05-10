@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nora-vla"
+version = "0.1.0"
+description = "NORA: Neural Orchestrator for Robotics Autonomy"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+dependencies = [
+    "torch>=2.4.0",
+    "transformers>=4.50.0",
+    "qwen_vl_utils",
+    "torchvision",
+    "accelerate",
+    "scipy",
+    "pillow",
+    "numpy",
+    "huggingface_hub",
+]
+
+[project.optional-dependencies]
+training = [
+    "tensorflow>=2.15.0",
+    "tensorflow_datasets>=4.9.3",
+    "tensorflow_graphics>=2021.12.3",
+    "dlimp @ git+https://github.com/moojink/dlimp_openvla",
+    "wandb",
+    "flash-attn",
+    "safetensors",
+]
+lerobot = [
+    "lerobot",
+    "wandb",
+    "flash-attn",
+    "safetensors",
+    "tqdm",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["nora*"]

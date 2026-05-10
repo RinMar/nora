@@ -10,9 +10,9 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 
-from datasets.rlds.oxe.configs import OXE_DATASET_CONFIGS, ActionEncoding
-from datasets.rlds.oxe.transforms import OXE_STANDARDIZATION_TRANSFORMS
-from datasets.rlds.utils.data_utils import NormalizationType
+from nora.training.datasets.rlds.oxe.configs import OXE_DATASET_CONFIGS, ActionEncoding
+from nora.training.datasets.rlds.oxe.transforms import OXE_STANDARDIZATION_TRANSFORMS
+from nora.training.datasets.rlds.utils.data_utils import NormalizationType
 
 # Initialize Overwatch =>> Wraps `logging.Logger`
 #overwatch = initialize_overwatch(__name__)
