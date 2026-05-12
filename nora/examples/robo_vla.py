@@ -1,5 +1,5 @@
 import os
-from inference.nora import Nora
+from nora.inference.nora import Nora
 from PIL import Image
 import numpy as np
 import gymnasium as gym

@@ -19,9 +19,9 @@ from transformers import PreTrainedTokenizerBase
 #from prismatic.models.backbones.vision import ImageTransform
 #from prismatic.util.data_utils import tree_map
 #from prismatic.vla.action_tokenizer import ActionTokenizer
-from datasets.rlds import make_interleaved_dataset, make_single_dataset
-from datasets.rlds.oxe import OXE_NAMED_MIXTURES, get_oxe_dataset_kwargs_and_weights
-from datasets.rlds.utils.data_utils import NormalizationType
+from nora.training.datasets.rlds import make_interleaved_dataset, make_single_dataset
+from nora.training.datasets.rlds.oxe import OXE_NAMED_MIXTURES, get_oxe_dataset_kwargs_and_weights
+from nora.training.datasets.rlds.utils.data_utils import NormalizationType
 
 # HuggingFace Default / LLaMa-2 IGNORE_INDEX (for labels)
 IGNORE_INDEX = -100
@@ -37,9 +37,9 @@ from PIL import Image
 
 #from prismatic.util.data_utils import tree_map
 #from prismatic.vla.action_tokenizer import ActionTokenizer
-from datasets.rlds import make_interleaved_dataset, make_single_dataset
-from datasets.rlds.oxe import OXE_NAMED_MIXTURES, get_oxe_dataset_kwargs_and_weights
-from datasets.rlds.utils.data_utils import NormalizationType
+from nora.training.datasets.rlds import make_interleaved_dataset, make_single_dataset
+from nora.training.datasets.rlds.oxe import OXE_NAMED_MIXTURES, get_oxe_dataset_kwargs_and_weights
+from nora.training.datasets.rlds.utils.data_utils import NormalizationType
 from torch.utils.data import Dataset, IterableDataset
 from transformers import AutoProcessor, PreTrainedTokenizerBase
 
